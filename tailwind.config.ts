@@ -9,7 +9,17 @@ export default {
   ],
   theme: {
     extend: {
+      transitionDuration: {
+        200: "0.2s",
+      },
+      fontFamily: {
+        artschool: ["ArtSchool", "sans-serif"],
+      },
       colors: {
+        black: {
+          900: "#0e0e0e",
+          950: "#000",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -29,16 +29,12 @@ export const metadata: Metadata = {
       "Simplifique a divisão de despesas com o Rachadão. Chega de cálculos manuais, a gente resolve por você!",
     images: [
       {
-        url: "assets/opengraph/og-image.png",
+        url: "../assets/opengraph/og-image.png",
         width: 1200,
         height: 630,
         alt: "Rachadão - Compartilhe despesas de forma justa!",
       },
     ],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
@@ -49,23 +45,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              name: "Rachadão",
-              url: "https://localhost:3000",
-              description:
-                "Com o Rachadão, dividir despesas entre amigos ficou fácil, rápido e justo. Ideal para viagens, jantares ou qualquer evento em grupo!",
-            }),
-          }}
-        />
-      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/background.png')]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/backgrounds/background-1.png')]`}
       >
         {children}
       </body>
