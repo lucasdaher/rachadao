@@ -21,9 +21,7 @@ const button = tv({
   },
 });
 
-export type HomeProps = VariantProps<typeof button>;
-
-export default function Home({ scroll }: HomeProps) {
+export default function Home() {
   const { scrolledDown } = useScrollDown();
   return (
     <div className="">
