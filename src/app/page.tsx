@@ -44,7 +44,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center gap-6">
           <h1 className="font-artschool text-white font-normal text-6xl tracking-tight max-w-[700px] text-center">
             A melhor forma de{" "}
-            <span className="bg-green-500 p-2 text-white hover:bg-green-500 hover:text-green-950 hover:p-6 hover:rounded-md transition-all duration-300 ease-in-out hover:cursor-pointer">
+            <span className="bg-green-500 px-2 py-1 text-white hover:bg-green-500 hover:text-green-950 transition-all duration-300 ease-in-out hover:cursor-pointer">
               rachar as contas
             </span>
           </h1>
