@@ -8,9 +8,9 @@ const header = tv({
   base: "fixed h-14 flex justify-between items-center px-8 py-2 z-50",
   variants: {
     scrollDown: {
-      true: "w-11/12 top-2 left-1/2 -translate-x-1/2 bg-green-500 bg-opacity-50 backdrop-blur-2xl rounded-xl transition-all duration-300 ease-in-out",
+      true: "w-[98%] top-3 left-1/2 -translate-x-1/2 bg-green-500 bg-opacity-50 backdrop-blur-2xl rounded-xl transition-all duration-300 ease-in-out",
       false:
-        "w-full top-0 left-0 bg-black-900 bg-opacity-50 backdrop-blur-2xl transition-all duration-300 ease-in-out",
+        "w-full top-0 left-0 bg-transparent transition-all duration-300 ease-in-out",
     },
   },
   defaultVariants: {
