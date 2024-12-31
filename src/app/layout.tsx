@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Simplifique a divisão de despesas com o Rachadão. Chega de cálculos manuais, a gente resolve por você!",
     images: [
       {
-        url: "../assets/opengraph/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Rachadão - Compartilhe despesas de forma justa!",
