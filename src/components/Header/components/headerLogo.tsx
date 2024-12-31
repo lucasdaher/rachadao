@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 export type HeaderLogoProps = {
-  logo?: "white" | "black" | null;
+  logo: "white" | "black";
 };
 
 export function HeaderLogo({ logo }: HeaderLogoProps) {
@@ -18,16 +18,15 @@ export function HeaderLogo({ logo }: HeaderLogoProps) {
         {logo === "white" && (
           <Image
             src={logoRachadaoWhite}
-            alt="Logotipo em branco na direção horizontal do Rachadão."
+            alt="Logo Rachadão"
             className="w-36 h-auto"
-            loading="lazy"
           />
         )}
 
         {logo === "black" && (
           <Image
             src={logoRachadaoBlack}
-            alt="Logotipo em preto na direção horizontal do Rachadão."
+            alt="Logo Rachadão"
             className="w-36 h-auto"
             loading="lazy"
           />

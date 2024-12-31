@@ -22,8 +22,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   openGraph: {
-    type: "website",
-    url: "https://rachadao.vercel.app/",
     title: "Rachadão - Compartilhe despesas de forma justa!",
     description:
       "Simplifique a divisão de despesas com o Rachadão. Chega de cálculos manuais, a gente resolve por você!",
@@ -46,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/backgrounds/background-1-1.svg')]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/backgrounds/bg-liquify-1.jpg')]`}
       >
         {children}
       </body>

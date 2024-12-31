@@ -6,7 +6,7 @@ import { useScrollDown } from "@/components/Header/hooks/useScrollDown";
 import { Button } from "@/components/ui/button";
 
 import { ArrowDown } from "lucide-react";
-import { tv, VariantProps } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 const button = tv({
   base: "text-white hover:bg-green-600 rounded-xl",
@@ -24,7 +24,7 @@ const button = tv({
 export default function Home() {
   const { scrolledDown } = useScrollDown();
   return (
-    <div className="">
+    <div>
       <Header>
         {scrolledDown && <HeaderLogo logo="black" />}
         {!scrolledDown && <HeaderLogo logo="white" />}
