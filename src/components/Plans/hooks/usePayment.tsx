@@ -8,5 +8,6 @@ export function usePayment() {
   function handlePayment() {
     setPaymentOpen(!paymentOpen);
   }
+
   return { paymentOpen, setPaymentOpen, handlePayment };
 }
