@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://localhost:3000",
+    url: "https://rachadao.vercel.app/",
     title: "Rachadão - Compartilhe despesas de forma justa!",
     description:
       "Simplifique a divisão de despesas com o Rachadão. Chega de cálculos manuais, a gente resolve por você!",
     images: [
       {
-        url: "/assets/opengraph/og-image.png",
+        url: "../assets/opengraph/og-image.png",
         width: 1200,
         height: 630,
         alt: "Rachadão - Compartilhe despesas de forma justa!",
