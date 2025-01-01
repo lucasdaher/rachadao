@@ -33,7 +33,7 @@ export function PlansCards() {
         {plans.map((plan, planIdx) => (
           <div
             key={planIdx}
-            className={`flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10`}
+            className={`flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 shadow-xl`}
           >
             <div>
               <div className="flex items-center justify-between gap-x-4">
