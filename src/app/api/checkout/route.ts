@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "");
 
   try {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       line_items: [
         {
           quantity: 1,
-          price: process.env.STRIPE_PRICE_ID,
+          price: "price_1QcvZOIzmFcH6e5Eykd2IOai",
         },
       ],
       mode: "subscription",
@@ -22,6 +22,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       id: session.id,
+      client_secret: session.client_secret,
     });
   } catch (error) {
     console.error("Erro ao criar sessão de checkout:", error);

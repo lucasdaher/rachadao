@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/backgrounds/bg-liquify-1.jpg')]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 bg-fixed bg-center bg-cover bg-no-repeat bg-[url('../assets/backgrounds/bg-elysian-8.jpg')]`}
       >
         {children}
       </body>

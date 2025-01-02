@@ -48,13 +48,16 @@ export function PaymentButton({ children, plan }: PaymentButtonProps) {
       });
 
       if (!response.ok) {
-        throw new Error("Erro ao buscar o client_secret.");
+        throw new Error("Não foi possível recuperar o client_secret.");
       }
 
       const data = await response.json();
       setClientSecret(data.client_secret);
     } catch (error) {
-      console.error("Erro ao buscar o client_secret:", error);
+      console.error(
+        "Ocorreu um erro ao tentar recuperar o client_secret:",
+        error
+      );
     }
   }, []);
 

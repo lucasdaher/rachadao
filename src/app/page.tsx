@@ -22,7 +22,7 @@ const button = tv({
   variants: {
     scroll: {
       true: "bg-white text-black hover:bg-black-900 hover:text-white",
-      false: "bg-green-500 text-white hover:bg-green-600",
+      false: "bg-white text-green-950 hover:bg-green-100",
     },
   },
   defaultVariants: {
@@ -43,8 +43,15 @@ export default function Home() {
           <HeaderNav>
             <HeaderList>
               <HeaderListItem>
-                <Button className={button({ scroll: scrolledDown })}>
-                  Acessar
+                <Button
+                  className={button({ scroll: scrolledDown })}
+                  onClick={() => {
+                    window.alert(
+                      "Funcionalidade em desenvolvimento. / Levar para área de login e registro."
+                    );
+                  }}
+                >
+                  Acesse sua conta
                 </Button>
               </HeaderListItem>
             </HeaderList>
@@ -58,11 +65,11 @@ export default function Home() {
         <section className="w-full p-24">
           <div className="flex flex-col justify-center items-center gap-6">
             <div className="flex flex-col justify-center items-center gap-2">
-              <h1 className="text-center text-4xl font-bold max-w-3xl text-black-900 leading-10 tracking-tighter">
+              <h1 className="text-center text-4xl font-bold max-w-3xl text-black-900 text-opacity-80 leading-10 tracking-tighter">
                 Estamos em beta e por isso estamos oferecendo a todos 1 dia
                 gratuito temporariamente
               </h1>
-              <p className="text-center text-lg font-medium max-w-4xl text-black-900/80 leading-8 tracking-tight">
+              <p className="text-center text-lg font-medium max-w-4xl text-black-900 text-opacity-60 leading-8 tracking-tight">
                 Para resgatar seu período de testes gratuito clique no botão
                 abaixo
               </p>
