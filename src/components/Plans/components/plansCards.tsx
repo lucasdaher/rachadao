@@ -1,34 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
 import { plans } from "../data/plansData";
 import { useYearly } from "../contexts/yearlyContext";
 import { Check, X } from "lucide-react";
 import { usePayment } from "../hooks/usePayment";
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import Image from "next/image";
 
-import agree from "@/assets/illustrations/agree.svg";
+import { PaymentButton } from "@/components/Payment/components/paymentButton";
 
 export function PlansCards() {
   const { isYearly } = useYearly();
   const { paymentOpen, setPaymentOpen } = usePayment();
   return (
     <React.Fragment>
-      {paymentOpen && (
-        <div className="bg-black-900 bg-opacity-70 fixed top-0 left-0 min-h-screen w-full z-10"></div>
-      )}
       <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         {plans.map((plan, planIdx) => (
           <div
@@ -87,48 +71,8 @@ export function PlansCards() {
                 ))}
               </ul>
             </div>
-            <Dialog modal>
-              <DialogTrigger asChild>
-                <Button
-                  variant={
-                    plan.name === "Plano Rachadão" ? "default" : "outline"
-                  }
-                  className={`mt-8 block w-full ${
-                    plan.name === "Plano Rachadão"
-                      ? "bg-green-600 text-white hover:bg-green-500"
-                      : ""
-                  }`}
-                  onClick={() => {
-                    setPaymentOpen(true);
-                  }}
-                >
-                  Começar agora
-                </Button>
-              </DialogTrigger>
-              <DialogContent onCloseAutoFocus={() => setPaymentOpen(false)}>
-                <>
-                  <VisuallyHidden.Root>
-                    <DialogTitle>Assinatura Rachadão</DialogTitle>
-                  </VisuallyHidden.Root>
-                  <DialogHeader className="py-8 flex justify-center items-center gap-6">
-                    <Image
-                      src={agree}
-                      alt="Ilustração que representa sucesso!"
-                      className="w-56"
-                    />
-                    <div className="flex flex-col justify-center items-center gap-2">
-                      <DialogTitle className="text-center">
-                        Assinatura adquirida com sucesso!
-                      </DialogTitle>
-                      <DialogDescription className="text-center">
-                        O seu pagamento está sendo processado e em breve você
-                        receberá a confirmação do seu plano.
-                      </DialogDescription>
-                    </div>
-                  </DialogHeader>
-                </>
-              </DialogContent>
-            </Dialog>
+
+            <PaymentButton plan={plan}>Comece agora</PaymentButton>
           </div>
         ))}
       </div>

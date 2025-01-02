@@ -6,6 +6,7 @@ export function PlansContainer({ ...props }: PlansContainerProps) {
   return (
     <section
       className="w-full bg-white flex justify-center items-center px-8 py-24 sm:py-32"
+      id="plans"
       {...props}
     >
       {props.children}
