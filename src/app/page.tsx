@@ -43,16 +43,11 @@ export default function Home() {
           <HeaderNav>
             <HeaderList>
               <HeaderListItem>
-                <Button
-                  className={button({ scroll: scrolledDown })}
-                  onClick={() => {
-                    window.alert(
-                      "Funcionalidade em desenvolvimento. / Levar para área de login e registro."
-                    );
-                  }}
-                >
-                  Acesse sua conta
-                </Button>
+                <Link href={`/signin`}>
+                  <Button className={button({ scroll: scrolledDown })}>
+                    Acessar a sua conta
+                  </Button>
+                </Link>
               </HeaderListItem>
             </HeaderList>
           </HeaderNav>

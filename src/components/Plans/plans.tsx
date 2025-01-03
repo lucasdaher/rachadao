@@ -1,5 +1,4 @@
 import { PlansCards } from "./components/plansCards";
-import { PlansSwitch } from "./components/plansSwitch";
 import { PlansTitle } from "./components/plansTitle";
 import { PlansContainer } from "./components/plansContainer";
 

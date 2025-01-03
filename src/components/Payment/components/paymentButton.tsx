@@ -97,14 +97,9 @@ export function PaymentButton({ children, plan }: PaymentButtonProps) {
             <VisuallyHidden.Root>
               <DialogTitle>Plano de Assinatura</DialogTitle>
             </VisuallyHidden.Root>
-            {stripePromise && (
-              <EmbeddedCheckoutProvider
-                stripe={stripePromise}
-                options={options}
-              >
-                <EmbeddedCheckout />
-              </EmbeddedCheckoutProvider>
-            )}
+            <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+              <EmbeddedCheckout />
+            </EmbeddedCheckoutProvider>
           </>
         </DialogContent>
       </Dialog>
