@@ -1,19 +1,15 @@
 "use client";
 
-import { plans } from "../data/plansData";
-import { useYearly } from "../contexts/yearlyContext";
-import { Check, X } from "lucide-react";
-import { usePayment } from "../hooks/usePayment";
 import React from "react";
 
+import { plans } from "../data/plansData";
 import { PaymentButton } from "@/components/Payment/components/paymentButton";
+import { Check } from "lucide-react";
 
 export function PlansCards() {
-  const { isYearly } = useYearly();
-  const { paymentOpen, setPaymentOpen } = usePayment();
   return (
     <React.Fragment>
-      <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-1">
         {plans.map((plan, planIdx) => (
           <div
             key={planIdx}
@@ -22,26 +18,17 @@ export function PlansCards() {
             <div>
               <div className="flex items-center justify-between gap-x-4">
                 <h3
-                  className={`text-lg font-semibold leading-8 ${
-                    plan.name === "Plano Rachadão"
-                      ? "text-green-600"
-                      : "text-gray-900"
-                  }`}
+                  className={`text-2xl font-semibold leading-8 text-green-600`}
                 >
                   {plan.name}
                 </h3>
-                {plan.name === "Plano Rachadão" && (
-                  <p className="rounded-full bg-green-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-green-600">
-                    Mais popular
-                  </p>
-                )}
               </div>
               <p className="mt-6 flex items-baseline gap-x-1">
                 <span className="text-4xl font-bold tracking-tight text-gray-900">
-                  R${isYearly ? plan.price.yearly : plan.price.monthly}
+                  R${plan.price}
                 </span>
-                <span className="text-sm font-semibold leading-6 text-gray-600">
-                  /{isYearly ? "ano" : "mês"}
+                <span className="text-sm font-semibold leading-6 text-gray-500">
+                  /mês
                 </span>
               </p>
               <ul
@@ -57,22 +44,10 @@ export function PlansCards() {
                     {feature}
                   </li>
                 ))}
-                {plan.notIncluded.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex gap-x-3 line-through decoration-gray-400"
-                  >
-                    <X
-                      className="h-6 w-5 flex-none text-gray-400"
-                      aria-hidden="true"
-                    />
-                    {feature}
-                  </li>
-                ))}
               </ul>
             </div>
 
-            <PaymentButton plan={plan}>Comece agora</PaymentButton>
+            <PaymentButton plan={plan}>Adquirir plano</PaymentButton>
           </div>
         ))}
       </div>
