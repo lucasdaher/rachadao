@@ -6,13 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import registerAction from "@/app/(auth)/signup/registerAction";
-import Form from "next/form";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TriangleAlert } from "lucide-react";
+
+import { hashSync } from "bcrypt-ts";
+
+import db from "@/lib/db";
 
 export function SignUpForm() {
   const signUpSchema = z.object({
@@ -40,15 +43,26 @@ export function SignUpForm() {
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      await db.user.create({
+        data: {
+          name: data.name,
+          email: data.email,
+          // Faz a criptografia da senha utilizando o bcrypt.
+          password: hashSync(data.password),
+        },
+      });
+      console.log("Usuário criado com sucesso.");
+    } catch (error) {
+      console.log("O usuário não foi criado no banco de dados.");
+    }
   };
 
   return (
-    <React.Fragment>
-      <Form
-        action={formAction}
-        onSubmit={handleSubmit(onSubmit)}
+    <>
+      <form
+        onSubmit={() => onSubmit}
         className="mx-auto md:mx-0 lg:mx-0 space-y-4 w-full max-w-md"
       >
         <div className="mx-auto md:mx-0 lg:mx-0 space-y-4 w-full max-w-md">
@@ -120,7 +134,7 @@ export function SignUpForm() {
             {isPending ? "Criando sua conta..." : "Criar conta"}
           </Button>
         </div>
-      </Form>
-    </React.Fragment>
+      </form>
+    </>
   );
 }
