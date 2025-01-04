@@ -79,12 +79,8 @@ export function PaymentButton({ children, plan }: PaymentButtonProps) {
       <Dialog modal>
         <DialogTrigger asChild>
           <Button
-            variant={plan.name === "Plano Rachadão" ? "default" : "outline"}
-            className={`mt-8 block w-full ${
-              plan.name === "Plano Rachadão"
-                ? "bg-green-600 text-white hover:bg-green-500"
-                : ""
-            }`}
+            variant="default"
+            className={`mt-8 block w-full bg-green-600 text-white font-semibold hover:bg-green-500`}
             onClick={() => {
               setPaymentOpen(true);
             }}
