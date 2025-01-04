@@ -21,6 +21,7 @@ import { FooterList } from "@/components/Footer/components/footerList";
 import { FooterListItem } from "@/components/Footer/components/footerListItem";
 import { FooterNav } from "@/components/Footer/components/footerNav";
 import { GithubIcon, InstagramIcon, LinkedinIcon } from "lucide-react";
+import { Faq } from "@/components/Faq";
 
 const button = tv({
   base: "transition-all duration-200 ease-in-out tracking-tight leading-none",
@@ -50,6 +51,7 @@ export default function Home() {
               <Link href={`/signin`}>
                 <Button
                   variant="default"
+                  size="sm"
                   className="bg-green-600 text-green-50 border-gren-500 font-semibold outline-green-500 hover:bg-green-700 tracking-tight"
                 >
                   Entrar
@@ -60,7 +62,8 @@ export default function Home() {
               <Link href={`/signin`}>
                 <Button
                   variant="secondary"
-                  className="tracking-tight text-black-900 bg-white hover:bg-gray-200"
+                  size="sm"
+                  className="tracking-tight text-green-600 bg-white hover:bg-gray-200"
                 >
                   Criar conta
                 </Button>
@@ -74,6 +77,8 @@ export default function Home() {
 
       <Features />
       <Plans />
+
+      <Faq />
 
       <Footer>
         <div className="flex flex-row justify-between items-center">
