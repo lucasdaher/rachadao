@@ -14,12 +14,6 @@ import { tv } from "tailwind-variants";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
-import { FooterInfo } from "@/components/Footer/components/footerInfo";
-import { FooterListTitle } from "@/components/Footer/components/footerListTitle";
-import { FooterList } from "@/components/Footer/components/footerList";
-import { FooterListItem } from "@/components/Footer/components/footerListItem";
-import { FooterNav } from "@/components/Footer/components/footerNav";
-import { GithubIcon, InstagramIcon, LinkedinIcon } from "lucide-react";
 import { Faq } from "@/components/Faq";
 
 const button = tv({
@@ -55,7 +49,7 @@ export default function Home() {
               </Link>
             </HeaderListItem>
             <HeaderListItem>
-              <Link href={`/signin`}>
+              <Link href={`/signup`}>
                 <Button
                   variant="secondary"
                   size="sm"
@@ -76,85 +70,7 @@ export default function Home() {
 
       <Faq />
 
-      <Footer>
-        <div className="flex flex-row justify-between items-center">
-          <FooterInfo />
-
-          <div className="flex flex-row items-start gap-12">
-            <section>
-              <FooterListTitle>Navegação</FooterListTitle>
-              <FooterNav>
-                <FooterList>
-                  <FooterListItem hasLink={true} href={`#`}>
-                    Início
-                  </FooterListItem>
-
-                  <FooterListItem hasLink={true} href={`#plans`}>
-                    Planos
-                  </FooterListItem>
-
-                  <FooterListItem hasLink={true} href={`/help-center`}>
-                    Central de Ajuda
-                  </FooterListItem>
-                </FooterList>
-              </FooterNav>
-            </section>
-
-            <section>
-              <FooterListTitle>Ajuda</FooterListTitle>
-              <FooterNav>
-                <FooterList>
-                  <FooterListItem hasLink={true} href={`#`}>
-                    Suporte
-                  </FooterListItem>
-
-                  <FooterListItem hasLink={true} href={`#plans`}>
-                    E-mail
-                  </FooterListItem>
-
-                  <FooterListItem hasLink={true} href={`/help-center`}>
-                    FAQ
-                  </FooterListItem>
-                </FooterList>
-              </FooterNav>
-            </section>
-
-            <section>
-              <FooterListTitle>Redes Sociais</FooterListTitle>
-              <FooterNav>
-                <FooterList>
-                  <FooterListItem
-                    hasLink={true}
-                    href={`https://instagram.com/daher.code`}
-                    flex="flex justify-center items-center gap-2"
-                  >
-                    <InstagramIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
-                    Instagram
-                  </FooterListItem>
-
-                  <FooterListItem
-                    hasLink={true}
-                    href={`https://linkedin.com/in/lucasdaherdev`}
-                    flex="flex justify-center items-center gap-2"
-                  >
-                    <LinkedinIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
-                    Linkedin
-                  </FooterListItem>
-
-                  <FooterListItem
-                    hasLink={true}
-                    href={`https://github.com/lucasdaher/rachadao`}
-                    flex="flex justify-center items-center gap-2"
-                  >
-                    <GithubIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
-                    GitHub
-                  </FooterListItem>
-                </FooterList>
-              </FooterNav>
-            </section>
-          </div>
-        </div>
-      </Footer>
+      <Footer />
     </div>
   );
 }

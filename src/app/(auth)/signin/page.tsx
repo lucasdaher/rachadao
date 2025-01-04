@@ -26,27 +26,15 @@ export default async function SignInPage() {
   }
 
   return (
-    <React.Fragment>
+    <div className="min-h-screen h-full overflow-y-auto bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
       <Header>
-        <HeaderLogo logo="black" />
-
-        <HeaderNav>
-          <HeaderList>
-            <HeaderListItem>
-              <Link href={`/`}>
-                <Button className="rounded-xl transition-all duration-200 ease-in-out bg-white text-black hover:bg-black-900 hover:text-white">
-                  <ArrowLeft />
-                  Voltar ao menu inicial
-                </Button>
-              </Link>
-            </HeaderListItem>
-          </HeaderList>
-        </HeaderNav>
+        <HeaderLogo logo="white" />
       </Header>
-      <div className="min-h-screen flex items-center justify-center">
+
+      <div className="flex items-center justify-center my-44">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-xl text-emerald-400">
+            <CardTitle className="text-xl text-green-500">
               Entrar na conta
             </CardTitle>
             <CardDescription>
@@ -63,6 +51,6 @@ export default async function SignInPage() {
           </CardContent>
         </Card>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

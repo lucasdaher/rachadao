@@ -1,9 +1,6 @@
 import { SignUpForm } from "@/components/Autentication";
 import { Header } from "@/components/Header";
-import { HeaderList } from "@/components/Header/components/HeaderList/headerList";
-import { HeaderListItem } from "@/components/Header/components/HeaderList/headerListItem";
 import { HeaderLogo } from "@/components/Header/components/headerLogo";
-import { HeaderNav } from "@/components/Header/components/headerNav";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,11 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { auth } from "@/../auth";
 import { redirect } from "next/navigation";
+
+import Image from "next/image";
+
+import logoBlack from "@/assets/logos/logo-black.svg";
 
 export default async function SignUpPage() {
   const session = await auth();
@@ -24,43 +24,46 @@ export default async function SignUpPage() {
     return redirect("/dashboard");
   }
   return (
-    <React.Fragment>
-      <Header>
-        <HeaderLogo logo="black" />
+    <>
+      <div className="min-h-screen h-full overflow-y-auto bg-white md:bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
+        <div className="flex md:hidden justify-center items-center w-auto mt-10 mx-4 md:mx-6 lg:mx-0">
+          <Link href={`/`}>
+            <Image
+              src={logoBlack}
+              alt="Logo versão preta do Rachadão"
+              className="w-28"
+            />
+          </Link>
+        </div>
+        <div className="hidden md:inline-block">
+          <Header>
+            <HeaderLogo logo="white" />
+          </Header>
+        </div>
 
-        <HeaderNav>
-          <HeaderList>
-            <HeaderListItem>
-              <Link href={`/`}>
-                <Button className="rounded-xl transition-all duration-200 ease-in-out bg-white text-black hover:bg-black-900 hover:text-white">
-                  <ArrowLeft />
-                  Voltar ao menu inicial
-                </Button>
-              </Link>
-            </HeaderListItem>
-          </HeaderList>
-        </HeaderNav>
-      </Header>
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle className="text-xl text-emerald-400">
-              Criar a sua conta
-            </CardTitle>
-            <CardDescription>
-              Informe os dados abaixo para criar a sua conta
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <SignUpForm />
-            <div className="mt-4 text-center">
-              <Link href={`/signin`}>
-                <Button variant="link">Já possui uma conta? Entre agora</Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="flex items-center justify-center my-2 md:my-36 lg:my-44 mx-4 md:mx-6 lg:mx-0 p-0">
+          <Card className="text-center w-full mx-auto max-w-full md:max-w-md border-none md:border shadow-none md:shadow-sm py-0 px-0 p-0 space-y-0 space-x-0">
+            <CardHeader>
+              <CardTitle className="text-xl text-green-500">
+                Criar a sua conta
+              </CardTitle>
+              <CardDescription>
+                Informe os dados abaixo para criar a sua conta
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-center mx-auto md:text-left md:mx-0">
+              <SignUpForm />
+              <div className="mt-4 text-center">
+                <Link href={`/signin`}>
+                  <Button variant="link">
+                    Já possui uma conta? Entre agora
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }
