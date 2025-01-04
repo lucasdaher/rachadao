@@ -7,22 +7,27 @@ import { HeaderLogo } from "@/components/Header/components/headerLogo";
 import { HeaderNav } from "@/components/Header/components/headerNav";
 import { useScrollDown } from "@/components/Header/hooks/useScrollDown";
 import { Introduction } from "@/components/Introduction";
-import { YearlyProvider } from "@/components/Plans/contexts/yearlyContext";
 import { Plans } from "@/components/Plans/plans";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 import { tv } from "tailwind-variants";
 
-import rachadaoLogo from "@/assets/logos/logo-black.svg";
+import { Features } from "@/components/Features";
+import { Footer } from "@/components/Footer";
 import Link from "next/link";
+import { FooterInfo } from "@/components/Footer/components/footerInfo";
+import { FooterListTitle } from "@/components/Footer/components/footerListTitle";
+import { FooterList } from "@/components/Footer/components/footerList";
+import { FooterListItem } from "@/components/Footer/components/footerListItem";
+import { FooterNav } from "@/components/Footer/components/footerNav";
+import { GithubIcon, InstagramIcon, LinkedinIcon } from "lucide-react";
 
 const button = tv({
-  base: "rounded-xl transition-all duration-200 ease-in-out",
+  base: "transition-all duration-200 ease-in-out tracking-tight leading-none",
   variants: {
     scroll: {
-      true: "bg-white text-black hover:bg-black-900 hover:text-white",
-      false: "bg-white text-green-950 hover:bg-green-100",
+      true: "bg-white text-black-900 hover:bg-black-900 hover:text-white",
+      false: "bg-white text-black-900 hover:bg-green-100",
     },
   },
   defaultVariants: {
@@ -34,139 +39,121 @@ export default function Home() {
   const { scrolledDown } = useScrollDown();
 
   return (
-    <YearlyProvider>
-      <div>
-        <Header>
-          {scrolledDown && <HeaderLogo logo="black" />}
-          {!scrolledDown && <HeaderLogo logo="white" />}
+    <div>
+      <Header>
+        {scrolledDown && <HeaderLogo logo="white" />}
+        {!scrolledDown && <HeaderLogo logo="white" />}
 
-          <HeaderNav>
-            <HeaderList>
-              <HeaderListItem>
-                <Link href={`/signin`}>
-                  <Button className={button({ scroll: scrolledDown })}>
-                    Acessar a sua conta
-                  </Button>
-                </Link>
-              </HeaderListItem>
-            </HeaderList>
-          </HeaderNav>
-        </Header>
+        <HeaderNav>
+          <HeaderList>
+            <HeaderListItem>
+              <Link href={`/signin`}>
+                <Button
+                  variant="default"
+                  className="bg-green-600 text-green-50 border-gren-500 font-semibold outline-green-500 hover:bg-green-700 tracking-tight"
+                >
+                  Entrar
+                </Button>
+              </Link>
+            </HeaderListItem>
+            <HeaderListItem>
+              <Link href={`/signin`}>
+                <Button
+                  variant="secondary"
+                  className="tracking-tight text-black-900 bg-white hover:bg-gray-200"
+                >
+                  Criar conta
+                </Button>
+              </Link>
+            </HeaderListItem>
+          </HeaderList>
+        </HeaderNav>
+      </Header>
 
-        <Introduction />
+      <Introduction />
 
-        <Plans />
+      <Features />
+      <Plans />
 
-        <section className="w-full p-24">
-          <div className="flex flex-col justify-center items-center gap-6">
-            <div className="flex flex-col justify-center items-center gap-2">
-              <h1 className="text-center text-4xl font-bold max-w-3xl text-black-900 text-opacity-80 leading-10 tracking-tighter">
-                Estamos em beta e por isso estamos oferecendo a todos 1 dia
-                gratuito temporariamente
-              </h1>
-              <p className="text-center text-lg font-medium max-w-4xl text-black-900 text-opacity-60 leading-8 tracking-tight">
-                Para resgatar seu período de testes gratuito clique no botão
-                abaixo
-              </p>
-            </div>
+      <Footer>
+        <div className="flex flex-row justify-between items-center">
+          <FooterInfo />
 
-            <Button className="" variant="default" size="lg">
-              Resgatar período de teste
-            </Button>
-          </div>
-        </section>
-
-        <footer className="w-full bg-transparent backdrop-blur-xl p-14">
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row items-start gap-12">
             <section>
-              <div className="flex flex-col justify-center items-start gap-2">
-                <button className="hover:scale-105 transition-all duration-200 ease-in-out">
-                  <Image
-                    src={rachadaoLogo}
-                    alt="Logo do Rachadão versão branca"
-                    className="w-40"
-                  />
-                </button>
-                <p className="text-left text-sm font-medium tracking-tight max-w-64">
-                  Rua 20 norte, 6, Águas Claras (Norte), Edifício Vivaldi
-                  Moreira, Brasília, Distrito Federal.
-                </p>
+              <FooterListTitle>Navegação</FooterListTitle>
+              <FooterNav>
+                <FooterList>
+                  <FooterListItem hasLink={true} href={`#`}>
+                    Início
+                  </FooterListItem>
 
-                <p className="text-black-900 text-opacity-50 text-left text-sm font-medium tracking-tight max-w-64">
-                  CNPJ: 57.428.661/0001-30
-                </p>
-              </div>
+                  <FooterListItem hasLink={true} href={`#plans`}>
+                    Planos
+                  </FooterListItem>
+
+                  <FooterListItem hasLink={true} href={`/help-center`}>
+                    Central de Ajuda
+                  </FooterListItem>
+                </FooterList>
+              </FooterNav>
             </section>
 
-            <div className="flex flex-row items-start gap-12">
-              <section>
-                <nav>
-                  <h1 className="text-xl font-bold pb-1 mb-4 border-b-2 border-black-900 border-opacity-20">
-                    Navegação
-                  </h1>
-                  <ul>
-                    <Link
-                      className="group transition-all duration-200 ease-in-out"
-                      href={`#`}
-                    >
-                      <li className="text-black-900 text-opacity-70 hover:text-black-900 transition-all duration-200 ease-in-out hover:bg-green-500 hover:bg-opacity-50 hover:backdrop-blur-xl p-2 rounded-xl">
-                        Início
-                      </li>
-                    </Link>
+            <section>
+              <FooterListTitle>Central de Ajuda</FooterListTitle>
+              <FooterNav>
+                <FooterList>
+                  <FooterListItem hasLink={true} href={`#`}>
+                    Suporte
+                  </FooterListItem>
 
-                    <Link
-                      className="group transition-all duration-200 ease-in-out"
-                      href={`#plans`}
-                    >
-                      <li className="text-black-900 text-opacity-70 hover:text-black-900 transition-all duration-200 ease-in-out hover:bg-green-500 hover:bg-opacity-50 hover:backdrop-blur-xl p-2 rounded-xl">
-                        Preços
-                      </li>
-                    </Link>
+                  <FooterListItem hasLink={true} href={`#plans`}>
+                    E-mail
+                  </FooterListItem>
 
-                    <Link
-                      className="group transition-all duration-200 ease-in-out"
-                      href={`/central-de-ajuda`}
-                    >
-                      <li className="text-black-900 text-opacity-70 hover:text-black-900 transition-all duration-200 ease-in-out hover:bg-green-500 hover:bg-opacity-50 hover:backdrop-blur-xl p-2 rounded-xl">
-                        Central de Ajuda
-                      </li>
-                    </Link>
-                  </ul>
-                </nav>
-              </section>
+                  <FooterListItem hasLink={true} href={`/help-center`}>
+                    FAQ
+                  </FooterListItem>
+                </FooterList>
+              </FooterNav>
+            </section>
 
-              <section>
-                <nav>
-                  <h1 className="text-xl font-bold pb-1 mb-4 border-b-2 border-black-900 border-opacity-20">
-                    Mídias sociais
-                  </h1>
-                  <ul>
-                    <Link
-                      href="https://instagram.com/rachadao"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group transition-all duration-200 ease-in-out"
-                    >
-                      <li className="text-black-900 text-opacity-70 hover:text-black-900 transition-all duration-200 ease-in-out hover:bg-green-500 hover:bg-opacity-50 hover:backdrop-blur-xl p-2 rounded-xl">
-                        Instagram
-                      </li>
-                    </Link>
+            <section>
+              <FooterListTitle>Redes Sociais</FooterListTitle>
+              <FooterNav>
+                <FooterList>
+                  <FooterListItem
+                    hasLink={true}
+                    href={`https://instagram.com/daher.code`}
+                    flex="flex justify-center items-center gap-2"
+                  >
+                    <InstagramIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
+                    Instagram
+                  </FooterListItem>
 
-                    <Link
-                      className="group transition-all duration-200 ease-in-out"
-                      href={`/comunidade`}
-                    >
-                      <li className="text-black-900 text-opacity-70 hover:text-black-900 transition-all duration-200 ease-in-out hover:bg-green-500 hover:bg-opacity-50 hover:backdrop-blur-xl p-2 rounded-xl">
-                        Comunidade
-                      </li>
-                    </Link>
-                  </ul>
-                </nav>
-              </section>
-            </div>
+                  <FooterListItem
+                    hasLink={true}
+                    href={`https://linkedin.com/in/lucasdaherdev`}
+                    flex="flex justify-center items-center gap-2"
+                  >
+                    <LinkedinIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
+                    Linkedin
+                  </FooterListItem>
+
+                  <FooterListItem
+                    hasLink={true}
+                    href={`https://github.com/lucasdaher/rachadao`}
+                    flex="flex justify-center items-center gap-2"
+                  >
+                    <GithubIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-all duration-200 ease-in-out" />
+                    GitHub
+                  </FooterListItem>
+                </FooterList>
+              </FooterNav>
+            </section>
           </div>
-        </footer>
-      </div>
-    </YearlyProvider>
+        </div>
+      </Footer>
+    </div>
   );
 }
