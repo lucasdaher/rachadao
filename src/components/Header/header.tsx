@@ -5,12 +5,12 @@ import { tv, VariantProps } from "tailwind-variants";
 import { useScrollDown } from "./hooks/useScrollDown";
 
 const header = tv({
-  base: "fixed h-14 flex justify-between items-center px-8 py-2 z-50",
+  base: "fixed h-14 flex flex-row justify-between items-center px-4 py-1 lg:px-8 lg:py-2 z-50",
   variants: {
     scrollDown: {
-      true: "w-[98%] top-3 left-1/2 -translate-x-1/2 bg-green-900 bg-opacity-50 backdrop-blur-2xl rounded-xl transition-all duration-300 ease-in-out shadow-lg shadow-black-900/20",
+      true: "w-full md:w-[98%] md:top-3 md:left-1/2 md:-translate-x-1/2 bg-green-900 bg-opacity-50 backdrop-blur-2xl rounded-xl transition-all duration-300 ease-in-out shadow-lg shadow-black-900/20",
       false:
-        "w-full top-0 left-0 bg-transparent transition-all duration-300 ease-in-out",
+        "w-screen md:top-0 md:left-0 bg-transparent transition-all duration-300 ease-in-out",
     },
   },
   defaultVariants: {

@@ -5,7 +5,6 @@ import { HeaderList } from "@/components/Header/components/HeaderList/headerList
 import { HeaderListItem } from "@/components/Header/components/HeaderList/headerListItem";
 import { HeaderLogo } from "@/components/Header/components/headerLogo";
 import { HeaderNav } from "@/components/Header/components/headerNav";
-import { useScrollDown } from "@/components/Header/hooks/useScrollDown";
 import { Introduction } from "@/components/Introduction";
 import { Plans } from "@/components/Plans/plans";
 import { Button } from "@/components/ui/button";
@@ -37,13 +36,10 @@ const button = tv({
 });
 
 export default function Home() {
-  const { scrolledDown } = useScrollDown();
-
   return (
     <div>
       <Header>
-        {scrolledDown && <HeaderLogo logo="white" />}
-        {!scrolledDown && <HeaderLogo logo="white" />}
+        <HeaderLogo logo="white" />
 
         <HeaderNav>
           <HeaderList>
@@ -105,7 +101,7 @@ export default function Home() {
             </section>
 
             <section>
-              <FooterListTitle>Central de Ajuda</FooterListTitle>
+              <FooterListTitle>Ajuda</FooterListTitle>
               <FooterNav>
                 <FooterList>
                   <FooterListItem hasLink={true} href={`#`}>

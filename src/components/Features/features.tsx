@@ -9,7 +9,7 @@ import { features } from "./data/featuresData";
 
 export function Features() {
   return (
-    <section className="bg-black-900 w-full p-14">
+    <section className="bg-black-900 w-full p-4 md:py-24 md:px-8 lg:p-24">
       <div className="container max-w-[1440px] w-full mx-auto px-4">
         <h2 className="text-white text-4xl font-bold text-center mb-12 tracking-tight leading-none">
           Conheça nossas funcionalidades

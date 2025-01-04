@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { usePayment } from "@/components/Plans/hooks/usePayment";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -25,7 +24,6 @@ type PaymentButtonProps = {
 export function PaymentButton({ children, plan }: PaymentButtonProps) {
   const [stripePromise, setStripePromise] = useState<any>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
-  const { paymentOpen, setPaymentOpen } = usePayment();
 
   useEffect(() => {
     const loadStripeAsync = async () => {
@@ -61,34 +59,22 @@ export function PaymentButton({ children, plan }: PaymentButtonProps) {
     }
   }, []);
 
-  useEffect(() => {
-    if (paymentOpen) {
-      fetchClientSecret();
-    }
-  }, [paymentOpen, fetchClientSecret]);
-
   const options = {
     clientSecret,
   };
 
   return (
     <React.Fragment>
-      {paymentOpen && (
-        <div className="bg-black-900 bg-opacity-70 fixed top-0 left-0 min-h-screen w-full z-10"></div>
-      )}
-      <Dialog modal>
-        <DialogTrigger asChild>
+      <Dialog onOpenChange={fetchClientSecret}>
+        <DialogTrigger>
           <Button
             variant="default"
             className={`mt-8 block w-full bg-green-600 text-white font-semibold hover:bg-green-500`}
-            onClick={() => {
-              setPaymentOpen(true);
-            }}
           >
             {children}
           </Button>
         </DialogTrigger>
-        <DialogContent onCloseAutoFocus={() => setPaymentOpen(false)}>
+        <DialogContent className="my-8 lg:my-12 py-14">
           <>
             <VisuallyHidden.Root>
               <DialogTitle>Plano de Assinatura</DialogTitle>
