@@ -4,8 +4,6 @@
 
 O **Rachadão** é um SaaS projetado para facilitar o compartilhamento e divisão de despesas entre usuários. Ele oferece uma experiência intuitiva para gerenciar finanças em grupo, focando em simplicidade, agilidade e segurança. O sistema inclui um plano de assinatura e é desenvolvido com tecnologias modernas como **Next.js**, **Prisma**, **TypeScript**, **TailwindCSS** e **Shadcn/ui**.
 
----
-
 ## **Sumário**
 1. [Funcionalidades Principais](#funcionalidades-principais)
 2. [Estrutura do Projeto](#estrutura-do-projeto)
@@ -14,16 +12,12 @@ O **Rachadão** é um SaaS projetado para facilitar o compartilhamento e divisã
 5. [Uso do Sistema](#uso-do-sistema)
 6. [Contribuições e Licença](#contribuições-e-licença)
 
----
-
 ## **Funcionalidades Principais**
 - Cadastro e autenticação de usuários.
 - Criação de grupos de despesas.
 - Cálculo automático de divisão de custos.
 - Notificações e lembretes de divisões agendadas.
 - Plano de assinatura com funcionalidades avançadas.
-
----
 
 ## **Estrutura do Projeto**
 
@@ -52,16 +46,12 @@ Contém o núcleo do projeto:
 - **components/**: Componentes reutilizáveis.
 - **lib/**: Bibliotecas e utilitários personalizados.
 
----
-
 ## **Tecnologias Utilizadas**
 - **Next.js**: Framework React para renderização híbrida.
 - **Prisma**: ORM para banco de dados.
 - **TypeScript**: Superset de JavaScript tipado.
 - **TailwindCSS**: Framework CSS utilitário.
 - **Shadcn/ui**: Biblioteca de componentes UI.
-
----
 
 ## **Configuração e Instalação**
 
@@ -92,8 +82,6 @@ Contém o núcleo do projeto:
    pnpm next dev
    ```
 
----
-
 ## **Uso do Sistema**
 
 ### **Autenticação**
@@ -109,9 +97,10 @@ Acessível após o login, permite:
 Gerencia o pagamento do plano de assinatura:
 - **/checkout**: Endpoint para iniciar pagamentos utilizando a integração com a Stripe.
 
----
-
 ## **Contribuições e Licença**
+
+### **Contribuições**
+Em breve...
 
 ### **Licença**
 Este projeto está licenciado sob a **MIT License**.
