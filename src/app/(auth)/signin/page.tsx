@@ -1,9 +1,5 @@
 import { SignInForm } from "@/components/Autentication";
 import { Header } from "@/components/Header";
-import { HeaderList } from "@/components/Header/components/HeaderList/headerList";
-import { HeaderListItem } from "@/components/Header/components/HeaderList/headerListItem";
-import { HeaderLogo } from "@/components/Header/components/headerLogo";
-import { HeaderNav } from "@/components/Header/components/headerNav";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,10 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-import React from "react";
 import { auth } from "@/../auth";
 import { redirect } from "next/navigation";
 
@@ -27,9 +21,7 @@ export default async function SignInPage() {
 
   return (
     <div className="min-h-screen h-full overflow-y-auto bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
-      <Header>
-        <HeaderLogo logo="white" />
-      </Header>
+      <Header />
 
       <div className="flex items-center justify-center my-44">
         <Card className="w-full max-w-md">

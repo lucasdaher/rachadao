@@ -12,8 +12,8 @@ export function FooterInfo() {
             <Image src={logo} alt="Logo do Rachadão branca." className="w-40" />
           </button>
           <p className="text-white text-opacity-50 text-left text-xs font-medium tracking-tight max-w-64">
-            Rua 20 norte, 6, Águas Claras (Norte), Edifício Vivaldi Moreira,
-            Brasília, Distrito Federal.
+            RUA 20, 6 EDIF VIVALDI MOREIRA, NORTE (AGUAS CLARAS), CEP 71915-750,
+            9701 - DF
           </p>
 
           <p className="text-white text-opacity-50 text-left text-xs mt-2 font-medium tracking-tight max-w-64">

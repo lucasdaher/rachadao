@@ -1,6 +1,5 @@
 import { SignUpForm } from "@/components/Autentication";
 import { Header } from "@/components/Header";
-import { HeaderLogo } from "@/components/Header/components/headerLogo";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -36,29 +35,35 @@ export default async function SignUpPage() {
           </Link>
         </div>
         <div className="hidden md:inline-block">
-          <Header>
-            <HeaderLogo logo="white" />
-          </Header>
+          <Header onlyLogo={true} />
         </div>
 
         <div className="flex items-center justify-center my-2 md:my-36 lg:my-44 mx-4 md:mx-6 lg:mx-0 p-0">
           <Card className="text-center w-full mx-auto max-w-full md:max-w-md border-none md:border shadow-none md:shadow-sm py-0 px-0 p-0 space-y-0 space-x-0">
-            <CardHeader>
-              <CardTitle className="text-xl text-green-500">
+            <CardHeader className="text-left">
+              <CardTitle className="text-2xl text-black-900">
                 Criar a sua conta
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-base text-black-900/50">
                 Informe os dados abaixo para criar a sua conta
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center mx-auto md:text-left md:mx-0">
               <SignUpForm />
               <div className="mt-4 text-center">
-                <Link href={`/signin`}>
-                  <Button variant="link">
-                    Já possui uma conta? Entre agora
-                  </Button>
-                </Link>
+                <div className="flex justify-center items-center gap-1">
+                  <span className="text-sm font-medium text-black-900">
+                    Já tem uma conta?
+                  </span>
+                  <Link href={`/signin`}>
+                    <Button
+                      variant="link"
+                      className="text-sm font-semibold text-green-600 p-0"
+                    >
+                      Entre agora
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </CardContent>
           </Card>

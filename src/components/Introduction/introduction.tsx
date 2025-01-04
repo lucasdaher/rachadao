@@ -3,7 +3,9 @@ import { IntroductionTitle } from "./components/introductionTitle";
 import { IntroductionCta } from "./components/IntroductionCta";
 import { IntroductionContainer } from "./components/introductionContainer";
 import { Button } from "@/components/ui/button";
+
 import { moveToPlans } from "./functions/moveToPlans";
+import { moveToFeatures } from "./functions/moveToFeatures";
 
 export function Introduction() {
   return (
@@ -24,6 +26,7 @@ export function Introduction() {
           size="lg"
           variant="secondary"
           className="font-semibold text-green-600"
+          onClick={moveToFeatures}
         >
           Conhecer funcionalidades
         </Button>

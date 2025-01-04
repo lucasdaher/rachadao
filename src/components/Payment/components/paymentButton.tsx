@@ -65,8 +65,8 @@ export function PaymentButton({ children, plan }: PaymentButtonProps) {
 
   return (
     <React.Fragment>
-      <Dialog onOpenChange={fetchClientSecret}>
-        <DialogTrigger>
+      <Dialog modal onOpenChange={fetchClientSecret}>
+        <DialogTrigger asChild>
           <Button
             variant="default"
             className={`mt-8 block w-full bg-green-600 text-white font-semibold hover:bg-green-500`}
