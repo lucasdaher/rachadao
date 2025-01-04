@@ -7,7 +7,7 @@ export function IntroductionContainer({
 }: IntroductionContainerProps) {
   return (
     <section
-      className="bg-green-900 bg-opacity-40 backdrop-blur-2xl w-full flex flex-col justify-center items-center gap-10 px-36 pt-40 pb-36 shadow-xl"
+      className="bg-black-900 bg-opacity-40 backdrop-blur-lg w-full flex flex-col justify-center items-center gap-10 px-36 pt-40 pb-36 shadow-xl"
       {...props}
     >
       {props.children}
