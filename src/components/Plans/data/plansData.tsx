@@ -1,8 +1,9 @@
 export const plans = [
   {
-    name: "Plano Rachadão",
+    name: "Assinatura Rachadão",
     price: 9,
     features: [
+      "Compartilhe a assinatura com outro usuário.",
       "Criação de até 3 grupos.",
       "Cálculo automático das despesas.",
       "Histórico de despesas.",

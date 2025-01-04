@@ -9,11 +9,11 @@ import { Check } from "lucide-react";
 export function PlansCards() {
   return (
     <React.Fragment>
-      <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+      <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-auto lg:max-w-lg lg:grid-cols-1">
         {plans.map((plan, planIdx) => (
           <div
             key={planIdx}
-            className={`flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 shadow-xl`}
+            className={`flex flex-col justify-between rounded-xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 shadow-2xl shadow-black-900/60`}
           >
             <div>
               <div className="flex items-center justify-between gap-x-4">
@@ -47,7 +47,7 @@ export function PlansCards() {
               </ul>
             </div>
 
-            <PaymentButton plan={plan}>Adquirir plano</PaymentButton>
+            <PaymentButton plan={plan}>Adquirir assinatura</PaymentButton>
           </div>
         ))}
       </div>
