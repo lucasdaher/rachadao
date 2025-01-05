@@ -5,14 +5,17 @@ export async function POST(request: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "");
 
   try {
-    const origin = request.headers.get("origin") || "http://localhost:3000";
+    const origin =
+      request.headers.get("origin") ||
+      "http://localhost:3000" ||
+      "https://rachadao.vercel.app/";
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       line_items: [
         {
           quantity: 1,
-          price: "price_1QcvZOIzmFcH6e5Eykd2IOai",
+          price: "price_1Qdb48IzmFcH6e5E9qT7YQ8A",
         },
       ],
       mode: "subscription",
