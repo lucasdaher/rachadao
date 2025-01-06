@@ -41,10 +41,10 @@ export default async function SignUpPage() {
         <div className="flex items-center justify-center my-2 md:my-36 lg:my-44 mx-4 md:mx-6 lg:mx-0 p-0">
           <Card className="text-center w-full mx-auto max-w-full md:max-w-md border-none md:border shadow-none md:shadow-sm py-0 px-0 p-0 space-y-0 space-x-0">
             <CardHeader className="text-left">
-              <CardTitle className="text-2xl text-black-900">
+              <CardTitle className="text-2xl text-white">
                 Criar a sua conta
               </CardTitle>
-              <CardDescription className="text-base text-black-900/50">
+              <CardDescription className="text-base text-white/50">
                 Informe os dados abaixo para criar a sua conta
               </CardDescription>
             </CardHeader>
@@ -52,7 +52,7 @@ export default async function SignUpPage() {
               <SignUpForm />
               <div className="mt-4 text-center">
                 <div className="flex justify-center items-center gap-1">
-                  <span className="text-sm font-medium text-black-900">
+                  <span className="text-sm font-medium text-white">
                     Já tem uma conta?
                   </span>
                   <Link href={`/signin`}>

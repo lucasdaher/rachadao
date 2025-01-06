@@ -25,7 +25,7 @@ export function Introduction() {
         <Button
           size="lg"
           variant="secondary"
-          className="font-semibold text-green-600"
+          className="font-semibold text-green-600 bg-white"
           onClick={moveToFeatures}
         >
           Conhecer funcionalidades

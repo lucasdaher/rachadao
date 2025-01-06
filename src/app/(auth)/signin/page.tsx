@@ -39,10 +39,10 @@ export default async function SignInPage() {
       <div className="flex items-center justify-center my-44">
         <Card className="text-center w-full mx-auto max-w-full md:max-w-md border-none md:border shadow-none md:shadow-sm py-0 px-0 p-0 space-y-0 space-x-0">
           <CardHeader className="text-left">
-            <CardTitle className="text-2xl text-black-900">
+            <CardTitle className="text-2xl text-white">
               Acesse sua conta
             </CardTitle>
-            <CardDescription className="text-base text-black-900/50">
+            <CardDescription className="text-base text-white/50">
               Preencha seu e-mail e senha para acessar
             </CardDescription>
           </CardHeader>
@@ -50,13 +50,13 @@ export default async function SignInPage() {
             <SignInForm />
             <div className="mt-4 text-center">
               <div className="flex justify-center items-center gap-1">
-                <span className="text-sm font-medium text-black-900">
+                <span className="text-sm font-medium text-white">
                   Não tem uma conta?
                 </span>
                 <Link href={`/signup`}>
                   <Button
                     variant="link"
-                    className="text-sm font-semibold text-green-600 p-0"
+                    className="text-sm font-semibold text-green-500 p-0"
                   >
                     Crie agora
                   </Button>

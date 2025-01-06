@@ -1,133 +1,108 @@
-import { ComponentProps } from "react";
-import { tv, VariantProps } from "tailwind-variants";
-import { useSidebar } from "./contexts/SidebarContext";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
 import {
-  HandCoins,
-  LayoutDashboard,
-  LogOut,
-  NotepadText,
-  PanelLeftOpen,
-  Users,
-  X,
-} from "lucide-react";
-import { Button } from "../ui/button";
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
 
-import logo from "@/assets/logos/logo-white.svg";
-import logoIcon from "@/assets/logos/logo-icon.png";
-import logoutAction from "@/app/(auth)/logout/logoutAction";
-import { SidebarListItem } from "./components/SIdebarListItem";
-import { SidebarList } from "./components/SIdebarList";
+import { ChartPie, NotepadText, Settings } from "lucide-react";
 
-const sidebar = tv({
-  base: "fixed top-0 left-0 min-h-screen border-r-[0.5px] border-gray-border border-opacity-100 bg-black-800 transition-all duration-200 ease-in-out",
-  variants: {
-    expanded: {
-      true: "w-64 px-4 py-8 flex flex-col justify-between items-start",
-      false: "w-16 px-2 py-4 flex flex-col justify-between items-start",
+import Image from "next/image";
+
+import logoCollapsed from "@/assets/logos/logo-icon.png";
+import logoExpanded from "@/assets/logos/logo-white.svg";
+import { SidebarNavMain } from "@/components/Sidebar/components/SidebarNavMain";
+import Link from "next/link";
+import { SidebarNavUser } from "@/components/Sidebar/components/SidebarNavUser";
+import { useCollapsible } from "./hooks/useCollapsible";
+
+const data = {
+  user: {
+    name: "Lucas Daher",
+    email: "contato@lucasdaher.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+  navMain: [
+    {
+      title: "Divisões",
+      url: "/dashboard/divisoes",
+      icon: ChartPie,
+      isActive: true,
+      items: [
+        {
+          title: "Minhas divisões",
+          url: "#",
+        },
+        {
+          title: "Grupos",
+          url: "#",
+        },
+      ],
     },
-  },
-  defaultVariants: {
-    expanded: true,
-  },
-});
+    {
+      title: "Relatórios",
+      url: "#",
+      icon: NotepadText,
+      items: [
+        {
+          title: "Exportar PDF",
+          url: "#",
+        },
+        {
+          title: "Histórico",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Configurações",
+      url: "#",
+      icon: Settings,
+      items: [
+        {
+          title: "Gerais",
+          url: "#",
+        },
+      ],
+    },
+  ],
+};
 
-export type SidebarProps = ComponentProps<"aside"> &
-  VariantProps<typeof sidebar>;
-
-export function Sidebar({ expanded, ...props }: SidebarProps) {
-  const { isOpen, toggleSidebar } = useSidebar();
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { isCollapsed } = useCollapsible();
   return (
-    <aside className={sidebar({ expanded: isOpen })}>
-      <div
-        className={`flex ${
-          !isOpen
-            ? "justify-center flex-col-reverse gap-4"
-            : "justify-between flex-row"
-        } items-center w-full transition-all duration-200 ease-in-out`}
-      >
-        <Link href={`/dashboard`}>
-          {isOpen && (
-            <Image
-              src={logo}
-              alt="Logo do Rachadão"
-              className={`w-36 cursor-pointer`}
-            />
-          )}
-        </Link>
-        <button
-          type="button"
-          onClick={toggleSidebar}
-          className="p-2 transition-all duration-200 ease-in-out rounded-md hover:bg-black-900 group"
-        >
-          {isOpen ? (
-            <X className="w-5 h-5 text-white/60 group-hover:text-white transition-all duration-200 ease-in-out" />
-          ) : (
-            <PanelLeftOpen className="w-5 h-5 text-white/60 group-hover:text-white transition-all duration-200 ease-in-out" />
-          )}
-        </button>
-        {!isOpen && (
-          <Image
-            src={logoIcon}
-            alt="Logo ícone do Rachadão"
-            className={`w-8 cursor-pointer`}
-          />
-        )}
-      </div>
-
-      <div className="w-full mt-8">
-        <SidebarList>
-          {/* Adicionar ícone e texto */}
-          <SidebarListItem selected>
-            <div className="flex justify-center items-center gap-2">
-              <LayoutDashboard className="w-5 h-5 text-white mx-auto" />
-              {isOpen && (
-                <>
-                  <span className="font-medium text-white">Dashboard</span>
-                </>
-              )}
-            </div>
-          </SidebarListItem>
-
-          <SidebarListItem>
-            <div className="flex justify-center items-center gap-2">
-              <Users className="w-5 h-5 text-white mx-auto" />
-              {isOpen && <span className="text-white font-medium">Grupos</span>}
-            </div>
-          </SidebarListItem>
-
-          <SidebarListItem>
-            <div className="flex justify-center items-center gap-2">
-              <HandCoins className="w-5 h-5 text-white mx-auto" />
-              {isOpen && (
-                <span className="text-white font-medium">Divisões</span>
-              )}
-            </div>
-          </SidebarListItem>
-
-          <SidebarListItem>
-            <div className="flex justify-center items-center gap-2">
-              <NotepadText className="w-5 h-5 text-white mx-auto" />
-              {isOpen && (
-                <span className="text-white font-medium">Relatórios</span>
-              )}
-            </div>
-          </SidebarListItem>
-        </SidebarList>
-      </div>
-
-      <div className="w-full mt-auto">
-        <Button
-          variant="destructive"
-          onClick={logoutAction}
-          className="p-3 w-full"
-        >
-          <LogOut className="w-5 h-5 text-white" />
-
-          {isOpen && <span className="font-semibold">Sair</span>}
-        </Button>
-      </div>
-    </aside>
+    <Sidebar collapsible="icon" className="sidebar" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <Link
+                href={`/dashboard`}
+                className={`flex ${
+                  isCollapsed ? "justify-center" : "justify-start"
+                } items-center p-2`}
+              >
+                <Image
+                  src={isCollapsed ? logoCollapsed : logoExpanded}
+                  alt="Logo do Rachadão"
+                  className={isCollapsed ? "w-6" : "w-36"}
+                />
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarNavMain items={data.navMain} />
+      </SidebarContent>
+      <SidebarFooter>
+        <SidebarNavUser user={data.user} />
+      </SidebarFooter>
+    </Sidebar>
   );
 }
