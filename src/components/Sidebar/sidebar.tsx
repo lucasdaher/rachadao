@@ -16,9 +16,9 @@ import Image from "next/image";
 
 import logoCollapsed from "@/assets/logos/logo-icon.png";
 import logoExpanded from "@/assets/logos/logo-white.svg";
-import { SidebarNavMain } from "@/components/Sidebar/components/SidebarNavMain";
+import { SidebarNavMain } from "@/components/Sidebar/components/sidebarNavMain";
 import Link from "next/link";
-import { SidebarNavUser } from "@/components/Sidebar/components/SidebarNavUser";
+import { SidebarNavUser } from "@/components/Sidebar/components/sidebarNavUser";
 import { useCollapsible } from "./hooks/useCollapsible";
 
 const data = {
