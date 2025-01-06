@@ -4,11 +4,11 @@ import { useSidebar } from "../contexts/SidebarContext";
 import Link from "next/link";
 
 const item = tv({
-  base: "p-3 flex flex-row justify-start items-center gap-2 hover:bg-green-950 transition-all duration-200 ease-in-out w-full rounded-md",
+  base: "p-3 w-full flex flex-row justify-start items-center gap-2 rounded-md transition-all duration-200 ease-in-out",
   variants: {
     selected: {
       true: "bg-green-800 hover:bg-green-800",
-      false: "",
+      false: "hover:bg-green-950",
     },
   },
   defaultVariants: {

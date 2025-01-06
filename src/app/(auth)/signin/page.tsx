@@ -12,6 +12,8 @@ import Link from "next/link";
 
 import { auth } from "@/../auth";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import logoBlack from "@/assets/logos/logo-black.svg";
 
 export default async function SignInPage() {
   const session = await auth();
@@ -20,25 +22,46 @@ export default async function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen h-full overflow-y-auto bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
-      <Header />
+    <div className="min-h-screen flex justify-center items-center overflow-y-auto bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
+      <div className="fixed top-0 left-0 flex md:hidden justify-center items-center w-auto mt-10 mx-4 md:mx-6 lg:mx-0">
+        <Link href={`/`}>
+          <Image
+            src={logoBlack}
+            alt="Logo versão preta do Rachadão"
+            className="w-28"
+          />
+        </Link>
+      </div>
+      <div className="lg:fixed lg:top-0 lg:left-0 hidden md:inline-block">
+        <Header onlyLogo={true} />
+      </div>
 
       <div className="flex items-center justify-center my-44">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle className="text-xl text-green-500">
-              Entrar na conta
+        <Card className="text-center w-full mx-auto max-w-full md:max-w-md border-none md:border shadow-none md:shadow-sm py-0 px-0 p-0 space-y-0 space-x-0">
+          <CardHeader className="text-left">
+            <CardTitle className="text-2xl text-black-900">
+              Acesse sua conta
             </CardTitle>
-            <CardDescription>
-              Digite as suas credenciais para acessar a sua conta.
+            <CardDescription className="text-base text-black-900/50">
+              Preencha seu e-mail e senha para acessar
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="text-center mx-auto md:text-left md:mx-0">
             <SignInForm />
             <div className="mt-4 text-center">
-              <Link href={`/signup`}>
-                <Button variant="link">Não possui uma conta? Crie agora</Button>
-              </Link>
+              <div className="flex justify-center items-center gap-1">
+                <span className="text-sm font-medium text-black-900">
+                  Não tem uma conta?
+                </span>
+                <Link href={`/signup`}>
+                  <Button
+                    variant="link"
+                    className="text-sm font-semibold text-green-600 p-0"
+                  >
+                    Crie agora
+                  </Button>
+                </Link>
+              </div>
             </div>
           </CardContent>
         </Card>

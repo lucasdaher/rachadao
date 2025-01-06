@@ -21,7 +21,7 @@ import { SidebarList } from "./components/SIdebarList";
 import { SidebarListItem } from "./components/SIdebarListItem";
 
 const sidebar = tv({
-  base: "min-h-screen border-r-[0.5px] border-gray-border border-opacity-100 bg-black-800 transition-all duration-200 ease-in-out",
+  base: "fixed top-0 left-0 min-h-screen border-r-[0.5px] border-gray-border border-opacity-100 bg-black-800 transition-all duration-200 ease-in-out",
   variants: {
     expanded: {
       true: "w-64 px-4 py-8 flex flex-col justify-between items-start",

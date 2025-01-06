@@ -24,8 +24,8 @@ export default async function SignUpPage() {
   }
   return (
     <>
-      <div className="min-h-screen h-full overflow-y-auto bg-white md:bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
-        <div className="flex md:hidden justify-center items-center w-auto mt-10 mx-4 md:mx-6 lg:mx-0">
+      <div className="min-h-screen flex flex-col justify-center items-center overflow-y-auto bg-white md:bg-black-900/70 backdrop-blur-xl w-full fixed top-0 left-0 z-0">
+        <div className="fixed top-0 left-0 flex md:hidden justify-center items-center w-auto mt-10 mx-4 md:mx-6 lg:mx-0">
           <Link href={`/`}>
             <Image
               src={logoBlack}
@@ -34,7 +34,7 @@ export default async function SignUpPage() {
             />
           </Link>
         </div>
-        <div className="hidden md:inline-block">
+        <div className="lg:fixed lg:top-0 lg:left-0 hidden md:inline-block">
           <Header onlyLogo={true} />
         </div>
 
