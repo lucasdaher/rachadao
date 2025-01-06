@@ -17,8 +17,8 @@ import { Button } from "../ui/button";
 import logo from "@/assets/logos/logo-white.svg";
 import logoIcon from "@/assets/logos/logo-icon.png";
 import logoutAction from "@/app/(auth)/logout/logoutAction";
-import { SidebarList } from "./components/SIdebarList";
 import { SidebarListItem } from "./components/SIdebarListItem";
+import { SidebarList } from "./components/SIdebarList";
 
 const sidebar = tv({
   base: "fixed top-0 left-0 min-h-screen border-r-[0.5px] border-gray-border border-opacity-100 bg-black-800 transition-all duration-200 ease-in-out",
