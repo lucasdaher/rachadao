@@ -1,16 +1,18 @@
 import React from "react";
 import { CollapsibleProvider } from "@/components/Sidebar/hooks/useCollapsible";
+import { auth } from "@/../auth";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // const session = await auth();
+  const session = await auth();
 
-  // if (!session) {
-  //   redirect(`/signin`);
-  // }
+  if (!session) {
+    redirect(`/signin`);
+  }
 
   return (
     <CollapsibleProvider>

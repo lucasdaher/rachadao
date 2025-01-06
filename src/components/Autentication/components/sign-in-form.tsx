@@ -1,27 +1,21 @@
 "use client";
 
-import React, { useActionState, useState } from "react";
-import { useFormStatus } from "react-dom";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import Form from "next/form";
 import loginAction from "@/app/(auth)/signin/loginAction";
 
 import { z } from "zod";
-import db from "@/lib/db";
-import { hashSync } from "bcrypt-ts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TriangleAlert } from "lucide-react";
 
+import { useRouter } from "next/navigation";
+
 export function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [state, formAction, isPending] = useActionState(loginAction, null);
-
+  const router = useRouter();
   const signInSchema = z.object({
     email: z
       .string()
@@ -41,26 +35,38 @@ export function SignInForm() {
     resolver: zodResolver(signInSchema),
   });
 
-  const onSubmit = async (data: any) => {
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const onSubmit = async (data: signInFormData) => {
+    setIsPending(true);
+    setErrorMessage(null);
+
     try {
-      await db.user.create({
-        data: {
-          name: data.name,
-          email: data.email,
-          // Faz a criptografia da senha utilizando o bcrypt.
-          password: hashSync(data.password),
-        },
-      });
-      console.log("Usuário criado com sucesso.");
-    } catch (error) {
-      console.log("O usuário não foi criado no banco de dados.");
+      const formData = new FormData();
+      formData.append("email", data.email);
+      formData.append("password", data.password);
+
+      const response = await loginAction(null, formData);
+
+      console.log("Resposta do loginAction:", response);
+
+      if (response.success) {
+        router.push(response.redirectTo || "/dashboard");
+      } else {
+        setErrorMessage(response.message || "Erro desconhecido.");
+      }
+    } catch (error: any) {
+      console.error("Erro no onSubmit:", error);
+      setErrorMessage("Ocorreu um erro inesperado. Tente novamente.");
+    } finally {
+      setIsPending(false);
     }
   };
 
   return (
     <React.Fragment>
       <form
-        action={formAction}
         onSubmit={handleSubmit(onSubmit)}
         className="mx-auto md:mx-0 lg:mx-0 space-y-4 w-full max-w-md"
       >
@@ -105,6 +111,13 @@ export function SignInForm() {
               </>
             )}
           </div>
+
+          {errorMessage && (
+            <div className="text-red-500 text-sm font-medium mt-4">
+              {errorMessage}
+            </div>
+          )}
+
           <div className="pt-8">
             <Button
               size="lg"

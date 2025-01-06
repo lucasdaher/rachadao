@@ -4,20 +4,30 @@ import { signIn } from "@/../auth";
 
 export default async function loginAction(_prevState: any, formData: FormData) {
   try {
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
-      redirect: true,
-      redirectTo: "/dashboard",
+      redirect: false,
     });
-    return { success: true };
+
+    return {
+      success: true,
+      redirectTo: "/dashboard",
+    };
   } catch (e: any) {
     if (e.type === "CredentialsSignin") {
       return {
         success: false,
-        message: "Usuário ou senha estão incorretos!",
+        message: "O e-mail ou senha estão incorretos.",
       };
     }
+    if (e.type === "UserNotFound") {
+      return {
+        success: false,
+        message: "O e-mail especificado não existe.",
+      };
+    }
+
     return {
       success: false,
       message: "A conta especificada não existe.",
