@@ -62,7 +62,7 @@ export function SignUpForm() {
   return (
     <>
       <form
-        onSubmit={() => onSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="mx-auto md:mx-0 lg:mx-0 space-y-4 w-full max-w-md"
       >
         <div className="mx-auto md:mx-0 lg:mx-0 space-y-4 w-full max-w-md">
