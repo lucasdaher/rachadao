@@ -125,7 +125,7 @@ export function SignInForm() {
               className="w-full bg-green-600 text-white hover:bg-green-700 font-semibold"
               disabled={isPending}
             >
-              {isPending ? "Acessando sua conta..." : "Entrar"}
+              {isPending ? "Carregando..." : "Entrar"}
             </Button>
           </div>
         </div>
